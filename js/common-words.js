@@ -1,6 +1,5 @@
 // Here are the 100 most popular words in English, as totally
 // stolen from here: https://gist.github.com/gravitymonkey/2406023
-(function(){
 var commonWords = [
   "the","of","and","a","to","in","is","you","that","it","he",
   "was","for","on","are","as","with","his","they","I","at","be",
@@ -14,4 +13,3 @@ var commonWords = [
   "who","oil","its","now","find","long","down","day","did","get",
   "come","made","may","part"
 ];
-}());
