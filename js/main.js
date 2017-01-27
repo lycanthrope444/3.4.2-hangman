@@ -25,14 +25,31 @@ function wordChecker(){
   while (cullWords(guessword) !== true){
     guessword = commonWords[wordRandomizer()];
   }
-  return guessword;
+  guessword = arrayMaker(guessword);
 }
 
 wordChecker();
 console.log(guessword);
+//changes the guessword to an array
+function arrayMaker(word){
+  return word.split('');
+}
+//creates guess spaces in html
+function spaceMaker (objective){
+  objective.forEach(function(){
+    
+  });
+}
+
+
+
+
+
+
+
 //used to start/reset the game
 function gameStart(){
-  
+
 }
 
 
