@@ -48,25 +48,49 @@ function spaceMaker (objective){
   spaceDisplay.textContent = spaceArray;
 }
 
-//Word array manipulation
-function searchWin(firstArray, secondArray){
+//checking logic in array
+// function searchWin(searchletter, wordArray){
+//   wordArray.forEach(function(letter){
+//     if(searchletter === letter){
+//       console.log("letter found");
+//     }
+//     // else {
+//     //   console.log("letter not found");
+//     //   maybe update gallows here
+//     // }
+//   });
+//
+// }
+
+function scorecardUpdater(searchletter, wordArray){
+  var scorecard;
+  scorecard = wordArray.map(function(letter){
+    if(searchletter === letter){
+      return letter;
+    } else {
+      return "_";
+    }
+  });
+  console.log(scorecard);
+  return scorecard;
 
 }
 
 //Win array upkeep
 function scoreUpkeep(){
-  winArray = spaceArray;
+
 }
 
 //takes the information for the turn and processes it
 function turnProcessor(){
-
+  console.log(guessword);
   //takes player input
   playerGuess = playerInput.value;
   console.log(playerGuess);
   //compares to word & updates
+  // searchWin(playerGuess, guessword);
 
-
+  spaceDisplay.textContent = scorecardUpdater(playerGuess, guessword);
   //updates gallows
 
   //updates playerguesses
