@@ -3,6 +3,7 @@
 
 var guessword ="";
 var turns = 6;
+var incorrectGuesses;
 var turnDisplay = document.getElementById("turns-left");
 var spaceDisplay = document.getElementById("guessspace");
 var playerInput = document.getElementById("guessletter");
@@ -11,7 +12,7 @@ var spaceArray;
 var formerGuesses = [];
 var playerGuess;
 var scorecard =[];
-var gameGoing = true;
+var gameGoing =true;
 
 //sets up buttons
 var submitGuess = document.querySelector(".button");
@@ -52,18 +53,20 @@ function spaceMaker (objective){
 }
 
 //checking logic in array
-// function searchWin(searchletter, wordArray){
-//   wordArray.forEach(function(letter){
-//     if(searchletter === letter){
-//       console.log("letter found");
-//     }
-//     // else {
-//     //   console.log("letter not found");
-//     //   maybe update gallows here
-//     // }
-//   });
-//
-// }
+function searchWin(searchletter, wordArray){
+  wordArray.forEach(function(letter){
+    if(searchletter === letter){
+      console.log("letter found");
+      turns += 1;
+    }
+    // else {
+    //   console.log("letter not found");
+    //   turns -= 1;
+    //   incorrectGuesses += 1;
+    // }
+  });
+
+}
 //this compare the player's entry to the objective and returns an array with the result
 function scorecardUpdater(searchletter, wordArray){
   var arraySearch;
@@ -99,10 +102,10 @@ function turnProcessor(){
     playerInput.value ="";
     console.log(playerGuess);
     //compares to word & updates
-    // searchWin(playerGuess, guessword);
+
     scorecard = scoreUpkeep(scorecard, scorecardUpdater(playerGuess, guessword), guessword);
     spaceDisplay.textContent = scorecard;
-
+    searchWin(playerGuess, guessword);
     console.log(guessword);
     console.log(scorecard);
     //updates gallows
@@ -110,7 +113,7 @@ function turnProcessor(){
     //updates playerguesses
 
     //updates turns left
-    turns -= 1;
+     turns -= 1;
     console.log(turns);
     turnDisplay.textContent = turns;
     //checks for win condition
@@ -118,6 +121,14 @@ function turnProcessor(){
 
     // console.log("Turn Processed");
   }
+  // else {
+  //   playerGuess = playerInput.value;
+  //   if (playerGuess){
+  //     gameStart();
+  //   } else {
+  //     gameRestart.textContent = "Thanks for playing!";
+  //   }
+  // }
 }
 
 //used to start/reset the game
@@ -126,6 +137,7 @@ function gameStart(){
   console.log(guessword);
   spaceMaker(guessword);
   turnDisplay.textContent = turns;
+  var gameGoing = true;
 }
 
 //prompt player to play again
