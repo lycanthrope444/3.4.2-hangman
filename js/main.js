@@ -9,6 +9,7 @@ var spaceArray;
 var formerGuesses = [];
 var winArray = [];
 var playerGuess;
+
 //sets up buttons
 var submitGuess = document.querySelector(".button");
 submitGuess.addEventListener("click", function(){
@@ -46,23 +47,37 @@ function spaceMaker (objective){
   });
   spaceDisplay.textContent = spaceArray;
 }
+
+//Word array manipulation
+function searchWin(firstArray, secondArray){
+
+}
+
+//Win array upkeep
+function scoreUpkeep(){
+  winArray = spaceArray;
+}
+
 //takes the information for the turn and processes it
 function turnProcessor(){
-  console.log("Turn Processed");
+
   //takes player input
   playerGuess = playerInput.value;
   console.log(playerGuess);
-  //compares to word
-  
-  //checks for win condition
+  //compares to word & updates
+
 
   //updates gallows
 
   //updates playerguesses
 
   //updates turns left
+  turns -= 1;
+  console.log(turns);
+  //checks for win condition
+  winChecker(guessword, winArray);
 
-
+  console.log("Turn Processed");
 }
 
 //used to start/reset the game
@@ -76,6 +91,11 @@ function gameStart(){
 function winChecker(firstArray, secondArray){
   if (firstArray === secondArray){
     //player wins
+    console.log("Playerwins");
+  } else if(turns === 0){
+    console.log("You've been hanged");
+  } else {
+    console.log("Player has not won");
   }
 }
 
