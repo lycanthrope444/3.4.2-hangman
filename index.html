@@ -8,34 +8,55 @@
   </head>
   <body>
     <div class="wrapper">
-      <header>
-        <h1>Word Game</h1>
-      </header>
-
-      <div class="display">
-        <div class="gallows">
-          <div class="the-hanged">
-            Guesses remaining : <span id="turns-left"></span>
+      <div class="container">
+        <header class="col-md-12">
+          <h1>Hangman</h1>
+        </header>
+        <div class="row">
+          <div class="display col-md-6">
+            <div class="gallows">
+              <div class="row">
+                <div class="the-hanged col-md-12">
+                  <div class="head">head</div>
+                  <div class="arm">arm</div>
+                  <div class="torso">torso</div>
+                  <div class="arm">arm</div>
+                  <div class="leg">leg</div>
+                  <div class="leg">leg</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="guesses-remaining col-md-12">
+                  Guesses remaining : <span id="turns-left"></span>
+                </div>
+              </div>
+            </div>
+            <div class="guessword">
+              <span id="guessspace"></span>
+            </div>
+          </div>
+          <div class="playerinput col-md-6">
+            <h2>Guess a letter</h2>
+            <form class="player-guess" action="index.html" method="post">
+              <div class="guessbox">
+                <input type="text" id="guessletter" name="guessletter"/>
+              </div>
+            </form>
+            <button type="button" name="button" class="button">Submit Guess</button>
+            <div class="lettersguessed">
+              Previous Guesses
+            </div>
           </div>
         </div>
-        <div class="guessword">
-          <span id="guessspace"></span>
-        </div>
-      </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="gameover" id="gameover">
 
-      <div class="playerinput">
-        <h2>Guess a letter</h2>
-        <form class="player-guess" action="index.html" method="post">
-          <div class="guessbox">
-            <input type="text" id="guessletter" name="guessletter"/>
+            </div>
           </div>
-        </form>
-        <button type="button" name="button" class="button">Submit Guess</button>
-        <div class="lettersguessed">
-          Previous Guesses
         </div>
-      </div>
 
+      </div>
     </div>
     <script type="text/javascript" src="js/common-words.js"></script>
     <script type="text/javascript" src="js/main.js"></script>

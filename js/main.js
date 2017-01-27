@@ -2,14 +2,16 @@
 "use strict";
 
 var guessword ="";
-var turns = 8;
+var turns = 6;
 var turnDisplay = document.getElementById("turns-left");
 var spaceDisplay = document.getElementById("guessspace");
 var playerInput = document.getElementById("guessletter");
+var gameRestart = document.getElementById("gameover");
 var spaceArray;
 var formerGuesses = [];
 var playerGuess;
 var scorecard =[];
+var gameGoing = true;
 
 //sets up buttons
 var submitGuess = document.querySelector(".button");
@@ -91,28 +93,31 @@ function scoreUpkeep(currentScore, scoreUpdate, currentObjective){
 
 //takes the information for the turn and processes it
 function turnProcessor(){
-  //takes player input
-  playerGuess = playerInput.value;
-  console.log(playerGuess);
-  //compares to word & updates
-  // searchWin(playerGuess, guessword);
-  scorecard = scoreUpkeep(scorecard, scorecardUpdater(playerGuess, guessword), guessword);
-  spaceDisplay.textContent = scorecard;
+  if(gameGoing){
+    //takes player input
+    playerGuess = playerInput.value;
+    playerInput.value ="";
+    console.log(playerGuess);
+    //compares to word & updates
+    // searchWin(playerGuess, guessword);
+    scorecard = scoreUpkeep(scorecard, scorecardUpdater(playerGuess, guessword), guessword);
+    spaceDisplay.textContent = scorecard;
 
-  console.log(guessword);
-  console.log(scorecard);
-  //updates gallows
+    console.log(guessword);
+    console.log(scorecard);
+    //updates gallows
 
-  //updates playerguesses
+    //updates playerguesses
 
-  //updates turns left
-  turns -= 1;
-  console.log(turns);
-  turnDisplay.textContent = turns;
-  //checks for win condition
-  winChecker(guessword, scorecard);
+    //updates turns left
+    turns -= 1;
+    console.log(turns);
+    turnDisplay.textContent = turns;
+    //checks for win condition
+    winChecker(guessword, scorecard);
 
-  // console.log("Turn Processed");
+    // console.log("Turn Processed");
+  }
 }
 
 //used to start/reset the game
@@ -125,7 +130,8 @@ function gameStart(){
 
 //prompt player to play again
 function playAgain(){
-
+  gameGoing = false;
+  gameRestart.textContent = "Play Again? y/n";
 }
 
 //used to check for winning
