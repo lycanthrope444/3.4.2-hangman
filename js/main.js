@@ -4,11 +4,15 @@
 var guessword ="";
 var turns = 8;
 var spaceDisplay = document.getElementById("guessspace");
+var playerInput = document.getElementById("guessletter");
 var spaceArray;
+var formerGuesses = [];
+var winArray = [];
+var playerGuess;
 //sets up buttons
 var submitGuess = document.querySelector(".button");
 submitGuess.addEventListener("click", function(){
-  console.log("Submit Clicked");
+  turnProcessor();
 });
 //creates random word
 function wordRandomizer(){
@@ -42,12 +46,24 @@ function spaceMaker (objective){
   });
   spaceDisplay.textContent = spaceArray;
 }
+//takes the information for the turn and processes it
+function turnProcessor(){
+  console.log("Turn Processed");
+  //takes player input
+  playerGuess = playerInput.value;
+  console.log(playerGuess);
+  //compares to word
+  
+  //checks for win condition
+
+  //updates gallows
+
+  //updates playerguesses
+
+  //updates turns left
 
 
-
-
-
-
+}
 
 //used to start/reset the game
 function gameStart(){
@@ -56,10 +72,13 @@ function gameStart(){
   spaceMaker(guessword);
 }
 
+//used to check for winning
+function winChecker(firstArray, secondArray){
+  if (firstArray === secondArray){
+    //player wins
+  }
+}
+
 gameStart();
-
-
-
-
 
 }());
