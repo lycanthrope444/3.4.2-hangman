@@ -3,6 +3,7 @@
 
 var guessword ="";
 var turns = 8;
+var turnDisplay = document.getElementById("turns-left");
 var spaceDisplay = document.getElementById("guessspace");
 var playerInput = document.getElementById("guessletter");
 var spaceArray;
@@ -107,10 +108,11 @@ function turnProcessor(){
   //updates turns left
   turns -= 1;
   console.log(turns);
+  turnDisplay.textContent = turns;
   //checks for win condition
   winChecker(guessword, scorecard);
 
-  console.log("Turn Processed");
+  // console.log("Turn Processed");
 }
 
 //used to start/reset the game
@@ -118,8 +120,13 @@ function gameStart(){
   wordChecker();
   console.log(guessword);
   spaceMaker(guessword);
+  turnDisplay.textContent = turns;
 }
-//
+
+//prompt player to play again
+function playAgain(){
+
+}
 
 //used to check for winning
 function winChecker(firstArray, secondArray){
@@ -128,8 +135,10 @@ function winChecker(firstArray, secondArray){
   if (firstArrayString === secondArrayString){
     //player wins
     console.log("Playerwins");
+    playAgain();
   } else if(turns === 0){
     console.log("You've been hanged");
+    playAgain();
   } else {
     console.log("Player has not won");
   }
