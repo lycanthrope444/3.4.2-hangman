@@ -98,7 +98,7 @@ function turnProcessor(){
   scorecard = scoreUpkeep(scorecard, scorecardUpdater(playerGuess, guessword), guessword);
   spaceDisplay.textContent = scorecard;
 
-
+  console.log(guessword);
   console.log(scorecard);
   //updates gallows
 
@@ -119,10 +119,13 @@ function gameStart(){
   console.log(guessword);
   spaceMaker(guessword);
 }
+//
 
 //used to check for winning
 function winChecker(firstArray, secondArray){
-  if (firstArray === secondArray){
+  var firstArrayString = firstArray.join("");
+  var secondArrayString = secondArray.join("");
+  if (firstArrayString === secondArrayString){
     //player wins
     console.log("Playerwins");
   } else if(turns === 0){
