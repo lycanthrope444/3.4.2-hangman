@@ -3,7 +3,8 @@
 
 var guessword ="";
 var turns = 8;
-
+var spaceDisplay = document.getElementById("guessspace");
+var spaceArray;
 //sets up buttons
 var submitGuess = document.querySelector(".button");
 submitGuess.addEventListener("click", function(){
@@ -28,17 +29,18 @@ function wordChecker(){
   guessword = arrayMaker(guessword);
 }
 
-wordChecker();
-console.log(guessword);
 //changes the guessword to an array
 function arrayMaker(word){
   return word.split('');
 }
+
+
 //creates guess spaces in html
 function spaceMaker (objective){
-  objective.forEach(function(){
-    
+  spaceArray = objective.map(function(){
+    return "_";
   });
+  spaceDisplay.textContent = spaceArray;
 }
 
 
@@ -49,10 +51,12 @@ function spaceMaker (objective){
 
 //used to start/reset the game
 function gameStart(){
-
+  wordChecker();
+  console.log(guessword);
+  spaceMaker(guessword);
 }
 
-
+gameStart();
 
 
 
