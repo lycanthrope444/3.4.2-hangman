@@ -9,7 +9,7 @@ var turnDisplay = document.getElementById("turns-left");
 var spaceDisplay = document.getElementById("guessspace");
 var playerInput = document.getElementById("guessletter");
 var gameRestart = document.getElementById("gameover");
-var replayButton = document.getElementById("replaybutton");
+var lastGuess = document.getElementById("failed-guess");
 var spaceArray;
 var formerGuesses = [];
 var playerGuess;
@@ -21,6 +21,10 @@ var submitGuess = document.querySelector(".guess");
 submitGuess.addEventListener("click", function(){
   turnProcessor();
 });
+var replayButton = document.querySelector("#replaybutton");
+replayButton.addEventListener("click", function(){
+  gameStart();
+});
 
 //creates a variable for each body playerInput
 //http://stackoverflow.com/questions/11807231/how-to-dynamically-create-javascript-variables-from-an-array
@@ -28,7 +32,6 @@ submitGuess.addEventListener("click", function(){
 for (var i= 0; i<theHangedBodyParts.length; i++){
   theHangedBody[theHangedBodyParts[i]] = document.getElementById(theHangedBodyParts[i]);
 }
-console.log(theHangedBody);
 //creates random word
 function wordRandomizer(){
   return Math.floor(Math.random()*(100));
@@ -114,15 +117,17 @@ function theHanged(wrongGuesses, bodyArray){
 
 //takes the information for the turn and processes it
 function turnProcessor(){
-  if(gameGoing){
+  // if(gameGoing){
     //takes player input
     playerGuess = playerInput.value;
+    formerGuesses.push(playerGuess);
     playerInput.value ="";
-    console.log(playerGuess);
+    console.log(formerGuesses);
     //compares to word & updates
 
     scorecard = scoreUpkeep(scorecard, scorecardUpdater(playerGuess, guessword), guessword);
     spaceDisplay.textContent = scorecard.join(" ");
+    lastGuess.textContent = formerGuesses.join(" ");
     // searchWin(playerGuess, guessword);
     console.log(guessword);
     console.log(scorecard);
@@ -138,7 +143,7 @@ function turnProcessor(){
     winChecker(guessword, scorecard);
 
     // console.log("Turn Processed");
-  }
+  // }
   // else {
   //   playerGuess = playerInput.value;
   //   if (playerGuess){
@@ -152,17 +157,18 @@ function turnProcessor(){
 //used to start/reset the game
 function gameStart(){
   wordChecker();
-  console.log(guessword);
   spaceMaker(guessword);
   turnDisplay.textContent = turns;
-  gameGoing = true;
+  // gameGoing = true;
+  replayButton.style.visibility ='hidden';
 }
 
 //prompt player to play again
 function playAgain(){
-  gameGoing = false;
+  // gameGoing = false;
   gameRestart.textContent = "Click Here to play Again";
-
+  replayButton.style.visibility ='visible';
+  turns=theHangedBodyParts.length;
 }
 
 //used to check for winning
@@ -176,8 +182,6 @@ function winChecker(firstArray, secondArray){
   } else if(turns === 0){
     console.log("You've been hanged");
     playAgain();
-  } else {
-    console.log("Player has not won");
   }
 }
 
