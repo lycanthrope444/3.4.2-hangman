@@ -2,6 +2,11 @@ body{
   background-color: #cceeff;
 }
 
+.head, .arm, .torso, .leg{
+  position: relative;
+  display: inline-block;
+}
+
 h1{
   text-align: center;
   font-size: 75px;
@@ -9,4 +14,8 @@ h1{
 
 .gameover{
   font-size: 50px;
+}
+
+#replaybutton{
+  visibility: hidden;
 }

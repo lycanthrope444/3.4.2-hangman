@@ -17,12 +17,18 @@
             <div class="gallows">
               <div class="row">
                 <div class="the-hanged col-md-12">
-                  <div class="head" id="head"></div>
-                  <div class="arm" id="arm1"></div>
-                  <div class="torso" id="torso"></div>
-                  <div class="arm" id="arm2"></div>
-                  <div class="leg" id="leg1"></div>
-                  <div class="leg" id="leg2"></div>
+                  <div class="row">
+                    <div class="head" id="head"></div>
+                  </div>
+                  <div class="row">
+                    <div class="arm" id="arm1"></div>
+                    <div class="torso" id="torso"></div>
+                    <div class="arm" id="arm2"></div>
+                  </div>
+                  <div class="row">
+                    <div class="leg" id="leg1"></div>
+                    <div class="leg" id="leg2"></div>
+                  </div>
                 </div>
               </div>
               <div class="row">
@@ -46,16 +52,21 @@
                 <input type="text" id="guessletter" name="guessletter"/>
               </div>
             </form>
-            <button type="button" name="button" class="button">Submit Guess</button>
+            <button type="button" name="button" class="btn guess">Submit Guess</button>
             <div class="lettersguessed">
-              Previous Guesses
+              <div class="row">
+                <span>Previous Guesses:</span>
+              </div>
+              <div class="row">
+                <span id="failed-guess"></span>
+              </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <div class="gameover" id="gameover">
-
+            <button type="button" name="eplay" class="btn" id="replaybutton">Replay</button>
             </div>
           </div>
         </div>

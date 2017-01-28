@@ -2,14 +2,14 @@
 "use strict";
 
 var guessword ="";
-var turns = 6;
-var incorrectGuesses = 0;
 var theHangedBody = {};
-var theHangedBodyParts = ['head', 'torso', 'arm1', 'arm2', 'leg1','leg2'];
+var theHangedBodyParts = ['head', 'torso', 'arm1', 'arm2', 'leg1','leg2',];
+var turns = theHangedBodyParts.length;
 var turnDisplay = document.getElementById("turns-left");
 var spaceDisplay = document.getElementById("guessspace");
 var playerInput = document.getElementById("guessletter");
 var gameRestart = document.getElementById("gameover");
+var replayButton = document.getElementById("replaybutton");
 var spaceArray;
 var formerGuesses = [];
 var playerGuess;
@@ -17,14 +17,14 @@ var scorecard =[];
 var gameGoing =true;
 
 //sets up buttons
-var submitGuess = document.querySelector(".button");
+var submitGuess = document.querySelector(".guess");
 submitGuess.addEventListener("click", function(){
   turnProcessor();
 });
 
 //creates a variable for each body playerInput
 //http://stackoverflow.com/questions/11807231/how-to-dynamically-create-javascript-variables-from-an-array
-//modified from this page
+//modified from this page - dynamic so it will change if more parts are added
 for (var i= 0; i<theHangedBodyParts.length; i++){
   theHangedBody[theHangedBodyParts[i]] = document.getElementById(theHangedBodyParts[i]);
 }
@@ -107,7 +107,7 @@ function scoreUpkeep(currentScore, scoreUpdate, currentObjective){
 //The hanged - populates the hanged based on the number of incorrect guesses
 function theHanged(wrongGuesses, bodyArray){
   for(i=0; i<wrongGuesses; i++){
-    theHangedBody[bodyArray[i]].textContent = "part";
+    theHangedBody[bodyArray[i]].textContent = bodyArray[i];
   }
 }
 
@@ -132,9 +132,7 @@ function turnProcessor(){
 
     //updates turns left
     turns -= 1;
-    incorrectGuesses+=1;
-    console.log(incorrectGuesses);
-    theHanged(incorrectGuesses, theHangedBodyParts);
+    theHanged(theHangedBodyParts.length - turns, theHangedBodyParts);
     turnDisplay.textContent = turns;
     //checks for win condition
     winChecker(guessword, scorecard);
@@ -157,13 +155,14 @@ function gameStart(){
   console.log(guessword);
   spaceMaker(guessword);
   turnDisplay.textContent = turns;
-  var gameGoing = true;
+  gameGoing = true;
 }
 
 //prompt player to play again
 function playAgain(){
   gameGoing = false;
-  gameRestart.textContent = "Play Again? y/n";
+  gameRestart.textContent = "Click Here to play Again";
+
 }
 
 //used to check for winning
