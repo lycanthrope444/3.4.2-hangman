@@ -3,7 +3,9 @@
 
 var guessword ="";
 var turns = 6;
-var incorrectGuesses;
+var incorrectGuesses = 0;
+var theHangedBody = {};
+var theHangedBodyParts = ['head', 'torso', 'arm1', 'arm2', 'leg1','leg2'];
 var turnDisplay = document.getElementById("turns-left");
 var spaceDisplay = document.getElementById("guessspace");
 var playerInput = document.getElementById("guessletter");
@@ -19,6 +21,14 @@ var submitGuess = document.querySelector(".button");
 submitGuess.addEventListener("click", function(){
   turnProcessor();
 });
+
+//creates a variable for each body playerInput
+//http://stackoverflow.com/questions/11807231/how-to-dynamically-create-javascript-variables-from-an-array
+//modified from this page
+for (var i= 0; i<theHangedBodyParts.length; i++){
+  theHangedBody[theHangedBodyParts[i]] = document.getElementById(theHangedBodyParts[i]);
+}
+console.log(theHangedBody);
 //creates random word
 function wordRandomizer(){
   return Math.floor(Math.random()*(100));
@@ -49,24 +59,24 @@ function spaceMaker (objective){
   spaceArray = objective.map(function(){
     return "_";
   });
-  spaceDisplay.textContent = spaceArray;
+  spaceDisplay.textContent = spaceArray.join(" ");
 }
 
 //checking logic in array
-function searchWin(searchletter, wordArray){
-  wordArray.forEach(function(letter){
-    if(searchletter === letter){
-      console.log("letter found");
-      turns += 1;
-    }
-    // else {
-    //   console.log("letter not found");
-    //   turns -= 1;
-    //   incorrectGuesses += 1;
-    // }
-  });
-
-}
+// function searchWin(searchletter, wordArray){
+//   wordArray.forEach(function(letter){
+//     if(searchletter === letter){
+//       console.log("letter found");
+//       turns += 1;
+//     }
+//     // else {
+//     //   console.log("letter not found");
+//     //   turns -= 1;
+//     //   incorrectGuesses += 1;
+//     // }
+//   });
+//
+// }
 //this compare the player's entry to the objective and returns an array with the result
 function scorecardUpdater(searchletter, wordArray){
   var arraySearch;
@@ -94,6 +104,14 @@ function scoreUpkeep(currentScore, scoreUpdate, currentObjective){
   return updatedScore;
 }
 
+//The hanged - populates the hanged based on the number of incorrect guesses
+function theHanged(wrongGuesses, bodyArray){
+  for(i=0; i<wrongGuesses; i++){
+    theHangedBody[bodyArray[i]].textContent = "part";
+  }
+}
+
+
 //takes the information for the turn and processes it
 function turnProcessor(){
   if(gameGoing){
@@ -104,8 +122,8 @@ function turnProcessor(){
     //compares to word & updates
 
     scorecard = scoreUpkeep(scorecard, scorecardUpdater(playerGuess, guessword), guessword);
-    spaceDisplay.textContent = scorecard;
-    searchWin(playerGuess, guessword);
+    spaceDisplay.textContent = scorecard.join(" ");
+    // searchWin(playerGuess, guessword);
     console.log(guessword);
     console.log(scorecard);
     //updates gallows
@@ -113,8 +131,10 @@ function turnProcessor(){
     //updates playerguesses
 
     //updates turns left
-     turns -= 1;
-    console.log(turns);
+    turns -= 1;
+    incorrectGuesses+=1;
+    console.log(incorrectGuesses);
+    theHanged(incorrectGuesses, theHangedBodyParts);
     turnDisplay.textContent = turns;
     //checks for win condition
     winChecker(guessword, scorecard);
