@@ -1,5 +1,11 @@
 body {
-  background-color: #cceeff; }
+  color: #ffffff; }
+
+.wrapper {
+  background-image: url("../images/gallows.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px; }
 
 .head, .arm, .torso, .leg {
   position: relative;

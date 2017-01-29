@@ -159,8 +159,15 @@ function gameStart(){
   wordChecker();
   spaceMaker(guessword);
   turnDisplay.textContent = turns;
+  formerGuesses = [];
   // gameGoing = true;
+  // clears the restartbox
   replayButton.style.visibility ='hidden';
+  gameRestart.textContent = "";
+  //clears the bodyparts
+  theHangedBodyParts.forEach(function(bodyPart){
+    theHangedBody[bodyPart].textContent = "";
+  });
 }
 
 //prompt player to play again
