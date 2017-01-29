@@ -1,5 +1,6 @@
 body {
-  color: #ffffff; }
+  color: #ffffff;
+  text-shadow: 3px 6px 10px black; }
 
 .wrapper {
   background-image: url("../images/gallows.jpg");
@@ -8,12 +9,43 @@ body {
   height: 800px; }
 
 .head, .arm, .torso, .leg {
-  position: relative;
-  display: inline-block; }
+  position: absolute;
+  display: inline-block;
+  width: 50px;
+  height: 50px; }
+
+.head {
+  left: 50px; }
+
+.torso {
+  top: 50px;
+  left: 50px; }
+
+#arm1 {
+  top: 50px; }
+
+#arm2 {
+  top: 50px;
+  left: 100px; }
+
+#leg1 {
+  top: 100px;
+  left: 25px; }
+
+#leg2 {
+  top: 100px;
+  left: 75px; }
 
 h1 {
   text-align: center;
   font-size: 75px; }
+
+h2 {
+  text-align: center; }
+
+.guessbox {
+  color: #000000;
+  text-shadow: none; }
 
 .gameover {
   font-size: 50px; }

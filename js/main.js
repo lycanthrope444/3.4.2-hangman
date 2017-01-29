@@ -26,9 +26,9 @@ replayButton.addEventListener("click", function(){
   gameStart();
 });
 
-//creates a variable for each body playerInput
+//creates a variable for each bodypart
 //http://stackoverflow.com/questions/11807231/how-to-dynamically-create-javascript-variables-from-an-array
-//modified from this page - dynamic so it will change if more parts are added
+//modified from this page - dynamic so it will change if more parts are added or subtracted
 for (var i= 0; i<theHangedBodyParts.length; i++){
   theHangedBody[theHangedBodyParts[i]] = document.getElementById(theHangedBodyParts[i]);
 }
@@ -90,7 +90,7 @@ function scorecardUpdater(searchletter, wordArray){
       return "_";
     }
   });
-  console.log(arraySearch);
+  // console.log(arraySearch);
   return arraySearch;
 }
 
@@ -122,15 +122,15 @@ function turnProcessor(){
     playerGuess = playerInput.value;
     formerGuesses.push(playerGuess);
     playerInput.value ="";
-    console.log(formerGuesses);
+    // console.log(formerGuesses);
     //compares to word & updates
 
     scorecard = scoreUpkeep(scorecard, scorecardUpdater(playerGuess, guessword), guessword);
     spaceDisplay.textContent = scorecard.join(" ");
     lastGuess.textContent = formerGuesses.join(" ");
     // searchWin(playerGuess, guessword);
-    console.log(guessword);
-    console.log(scorecard);
+    // console.log(guessword);
+    // console.log(scorecard);
     //updates gallows
 
     //updates playerguesses
@@ -159,7 +159,7 @@ function gameStart(){
   wordChecker();
   spaceMaker(guessword);
   turnDisplay.textContent = turns;
-  formerGuesses = [];
+
   // gameGoing = true;
   // clears the restartbox
   replayButton.style.visibility ='hidden';
@@ -176,6 +176,7 @@ function playAgain(){
   gameRestart.textContent = "Click Here to play Again";
   replayButton.style.visibility ='visible';
   turns=theHangedBodyParts.length;
+  formerGuesses = [];
 }
 
 //used to check for winning
