@@ -59,12 +59,20 @@ h2{
   text-shadow: none;
 }
 
+.previous{
+  padding-left: 15px;
+}
+
+#failed-guess{
+  padding-left: 15px;
+}
+
 .bodypart{
   // border:1px solid black;
 }
 
 .gameover{
-  font-size: 50px;
+  font-size: 30px;
 }
 
 #replaybutton{

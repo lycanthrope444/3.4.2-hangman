@@ -114,6 +114,17 @@ function theHanged(wrongGuesses, bodyArray){
   }
 }
 
+function turnChecker(plGuess, targetWord){
+  var tickDown = true;
+  for (i=0; i<targetWord.length; i++){
+    if (plGuess === targetWord[i]){
+      tickDown = false;
+    }
+  }
+  if (tickDown){
+    turns -= 1;
+  }
+}
 
 //takes the information for the turn and processes it
 function turnProcessor(){
@@ -136,7 +147,8 @@ function turnProcessor(){
     //updates playerguesses
 
     //updates turns left
-    turns -= 1;
+    turnChecker(playerGuess, guessword);
+    // turns -= 1;
     theHanged(theHangedBodyParts.length - turns, theHangedBodyParts);
     turnDisplay.textContent = turns;
     //checks for win condition

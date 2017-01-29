@@ -47,8 +47,14 @@ h2 {
   color: #000000;
   text-shadow: none; }
 
+.previous {
+  padding-left: 15px; }
+
+#failed-guess {
+  padding-left: 15px; }
+
 .gameover {
-  font-size: 50px; }
+  font-size: 30px; }
 
 #replaybutton {
   visibility: hidden; }
