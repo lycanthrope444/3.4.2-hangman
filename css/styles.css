@@ -47,6 +47,11 @@ h2 {
   color: #000000;
   text-shadow: none; }
 
+.guess {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-shadow: 4px 4px 4px black; }
+
 .previous {
   padding-left: 15px; }
 
@@ -57,6 +62,9 @@ h2 {
   font-size: 30px; }
 
 #replaybutton {
-  visibility: hidden; }
+  visibility: hidden;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-shadow: 4px 4px 4px black; }
 
 /*# sourceMappingURL=styles.css.map */

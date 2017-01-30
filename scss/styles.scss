@@ -59,6 +59,12 @@ h2{
   text-shadow: none;
 }
 
+.guess{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-shadow: 4px 4px 4px black;
+}
+
 .previous{
   padding-left: 15px;
 }
@@ -77,4 +83,7 @@ h2{
 
 #replaybutton{
   visibility: hidden;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-shadow: 4px 4px 4px black;
 }
